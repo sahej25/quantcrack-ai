@@ -1,32 +1,21 @@
-# QuantCrack AI — Basic MVP v2
+# QuantCrack AI v5 — Supabase Question Manager
 
-A responsive CAT Quant practice site with topic practice, difficulty filters, bookmarks, a mixed mini mock test, explanations, and local progress tracking. This is an original learning project inspired by general exam-prep patterns; it does not use Cracku branding or proprietary code.
+This package adds an online admin page at `admin.html`, Supabase-backed questions, and SQL policies. Keep `config.js` with only your Supabase Project URL and publishable/anon key. NEVER place a service_role/secret key in browser code.
 
-## Run locally
-1. Extract this ZIP.
-2. Open `index.html` in your browser.
-3. Select a topic and practise.
+## Setup
 
-No dependencies, API keys, or build process are required.
+1. Create a Supabase project at https://supabase.com/dashboard.
+2. In Project Settings → API, copy the Project URL and the publishable key (or legacy anon key). Put them in `config.js`.
+3. Open SQL Editor → New query, paste and run `supabase-setup.sql`.
+4. In Authentication → Users, add a user with your admin email and a strong password. If email confirmation is required, confirm it before signing in.
+5. Copy that user's UUID from Authentication → Users. In SQL Editor run:
+   `insert into public.question_admins (user_id) values ('PASTE-USER-UUID-HERE');`
+6. Upload/replace `index.html`, `styles.css`, `app.js`, `config.js`, `admin.html`, and `admin.js` in the root of your GitHub repo. `supabase-setup.sql` and README may also be uploaded.
+7. Wait for Vercel to redeploy. Open `https://YOUR-SITE/admin.html`, sign in, and add/publish questions.
 
-## Deploy as a public website
-This is a static site. A simple option:
-1. Create a GitHub repository and upload `index.html`, `styles.css`, and `app.js` to its root.
-2. In Vercel, import that repository.
-3. Use the default settings; no build command is required for this plain static site.
-4. Deploy and test the generated public URL on mobile and desktop.
-
-You must sign in to GitHub/Vercel and perform the deploy action yourself; this package does not publish to an account automatically.
-
-## MVP limitations
-- Progress and bookmarks are stored in browser localStorage, not a cloud database.
-- Mock-test timer is not yet enforced separately; topic practice has a countdown timer.
-- The question set is small and should be reviewed and expanded before public/paid use.
-- No authentication or payment integration yet.
-
-
-## Version 3 improvements
-- Includes a real 12-minute countdown for the mini mock test.
-- Automatically submits the mock when time expires.
-- Highlights the final minute and improves keyboard focus visibility.
-- Upload all three matching files (`index.html`, `styles.css`, and `app.js`) together to avoid version mismatch.
+## How it works
+- Public practice site fetches published questions from Supabase. If Supabase isn't configured or has no published questions, it falls back to the built-in sample bank.
+- Admin page supports adding, editing, publishing/unpublishing, and deleting questions.
+- Row-level security limits question mutations to UUIDs manually added to `question_admins` by you in SQL Editor.
+- User stats and bookmarks still live in browser localStorage; this only cloud-saves the question bank.
+- Keep admin credentials private. The URL isn't secret, and security depends on authentication and database policies.
