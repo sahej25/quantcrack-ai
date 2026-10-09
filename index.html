@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuantCrack AI — CAT Quant Practice</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">Q</div><div><strong>QuantCrack</strong><small>CAT Quant Practice</small></div></div>
+      <p class="nav-label">LEARN</p>
+      <button class="nav-item active" data-view="practice">▦ <span>Practice</span></button>
+      <button class="nav-item" data-view="progress">◷ <span>My progress</span></button>
+      <div class="sidebar-note"><span class="spark">✦</span><strong>Small steps. Big scores.</strong><p>Build your CAT Quant confidence one question at a time.</p></div>
+      <div class="sidebar-footer">Independent CAT practice project</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">YOUR DAILY PRACTICE</div><h1 id="page-title">Quant practice</h1></div>
+        <div class="streak-pill">✦ <span id="streak">Start your streak</span></div>
+      </header>
+
+      <section id="practice-view">
+        <div class="welcome-card">
+          <div><p class="eyebrow light">WELCOME TO YOUR PRACTICE SPACE</p><h2>Get a little better<br>every day.</h2><p>Choose a topic, solve questions, and learn from every attempt.</p></div>
+          <div class="welcome-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="math-symbol">∑</div><span class="floating f1">x²</span><span class="floating f2">%</span><span class="floating f3">π</span></div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon purple">◎</span><div><small>Questions attempted</small><strong id="attempted-stat">0</strong></div></article>
+          <article class="stat-card"><span class="stat-icon green">✓</span><div><small>Correct answers</small><strong id="correct-stat">0</strong></div></article>
+          <article class="stat-card"><span class="stat-icon orange">↗</span><div><small>Accuracy</small><strong id="accuracy-stat">—</strong></div></article>
+        </div>
+
+        <section class="section">
+          <div class="section-heading"><div><h2>Choose your topic</h2><p>Start with a topic you want to improve.</p></div><span class="tiny-tag">CAT QUANT</span></div>
+          <div class="topic-grid" id="topic-grid"></div>
+        </section>
+
+        <section class="section practice-panel" id="question-panel">
+          <div class="section-heading"><div><h2 id="set-title">Quick practice</h2><p id="set-subtitle">A short set to warm up your brain.</p></div><div class="timer">◷ <span id="timer">15:00</span></div></div>
+          <div class="progress-track"><div id="set-progress"></div></div>
+          <div class="question-meta"><span id="question-count">QUESTION 1 OF 5</span><span id="question-topic">ARITHMETIC</span></div>
+          <h3 id="question-text">Choose a topic above to begin.</h3>
+          <div class="options" id="options"></div>
+          <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+          <div class="question-actions"><button class="text-button" id="skip-btn">Skip for now</button><button class="primary-button" id="check-btn" disabled>Check answer <span>→</span></button></div>
+        </section>
+      </section>
+
+      <section id="progress-view" class="hidden">
+        <div class="section-heading"><div><h2>Your learning progress</h2><p>Your stats update as you practise on this device.</p></div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon purple">◎</span><div><small>Questions attempted</small><strong id="progress-attempted">0</strong></div></article>
+          <article class="stat-card"><span class="stat-icon green">✓</span><div><small>Correct answers</small><strong id="progress-correct">0</strong></div></article>
+          <article class="stat-card"><span class="stat-icon orange">↗</span><div><small>Accuracy</small><strong id="progress-accuracy">—</strong></div></article>
+        </div>
+        <div class="section progress-list"><h2>Topic practice</h2><div id="topic-progress"></div></div>
+        <button class="text-button" id="reset-btn">Reset local progress</button>
+      </section>
+      <footer class="footer">Practice thoughtfully. Review each explanation. <span>QuantCrack AI · MVP</span></footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
